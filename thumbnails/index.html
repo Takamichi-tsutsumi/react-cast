@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-5 target">
+      </div>
+    </div>
+  </div>
+</body>
+<script type="text/jsx">
+// Define a `class`
+var Badge = React.createClass({
+      render: function() {
+        return  <button className="btn btn-primary" type="button">
+          {this.props.title} <span className="badge">{this.props.number}</span>
+        </button>
+      }
+    });
+
+var Thumbnail = React.createClass({
+  render: function() {
+    return <div className="thumbnail">
+          <img src={this.props.imageUrl} />
+              <div className="caption">
+                <h3>{this.props.header}</h3>
+                <p>{this.props.description}</p>
+                <p>
+                  <Badge title={this.props.title} number={this.props.number} />
+                </p>
+             </div>
+           </div>
+    }
+  })
+
+  var options = {
+    title: 'See Tutorials',
+    number: 21,
+    header: 'Learn React',
+    description: 'RReact is fantastic new library for making fast, dynamic htmlReact is fantastic new library for making fast, dynamic htmleact is fantastic new library for making fast, dynamic html',
+    imageUrl: 'http://facebook.github.io/react/img/logo_og.png'
+    };
+
+  // React, please render this class
+  var element = React.createElement(Thumbnail, options);
+
+  // React, after you render this class, please place it in my body tag
+  React.render(element, document.querySelector('.target'));
+
+</script>
+</html>
